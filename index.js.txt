@@ -1,0 +1,46 @@
+const { Client, GatewayIntentBits } = require('discord.js');
+const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
+const ytdl = require('ytdl-core');
+
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates]
+});
+
+const CHANNEL_ID = 'YOUR_VOICE_CHANNEL_ID';
+const GUILD_ID = 'YOUR_SERVER_ID';
+const VIDEO_URL = 'YOUR_YOUTUBE_LINK';
+
+client.once('ready', async () => {
+  console.log('Bot is online');
+
+  const channel = await client.channels.fetch(CHANNEL_ID);
+
+  const connection = joinVoiceChannel({
+    channelId: CHANNEL_ID,
+    guildId: GUILD_ID,
+    adapterCreator: channel.guild.voiceAdapterCreator,
+  });
+
+  const player = createAudioPlayer();
+
+  function play() {
+    const stream = ytdl(VIDEO_URL, { filter: 'audioonly' });
+    const resource = createAudioResource(stream);
+
+    player.play(resource);
+  }
+
+  play();
+
+  player.on(AudioPlayerStatus.Idle, () => {
+    play(); // 🔁 loop forever
+  });
+
+  connection.subscribe(player);
+
+  connection.on('stateChange', () => {
+    // auto-reconnect logic can go here
+  });
+});
+
+client.login(MTQ5MzE5NjU5NTg1MDY0NTU3NA.GJ8HfF.vedSXW8ULhxq7K9w3R_BE-jGO9e_CAxDpOyajo);
