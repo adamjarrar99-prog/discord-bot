@@ -43,4 +43,4 @@ client.once('ready', async () => {
   });
 });
 
-client.login(MTQ5MzE5NjU5NTg1MDY0NTU3NA.GJ8HfF.vedSXW8ULhxq7K9w3R_BE-jGO9e_CAxDpOyajo);
+client.login(process.env.TOKEN);
