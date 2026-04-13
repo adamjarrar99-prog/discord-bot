@@ -6,9 +6,9 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates]
 });
 
-const CHANNEL_ID = 'YOUR_VOICE_CHANNEL_ID';
-const GUILD_ID = 'YOUR_SERVER_ID';
-const VIDEO_URL = 'YOUR_YOUTUBE_LINK';
+const CHANNEL_ID = 850155403349065751;
+const GUILD_ID = 850155402141237318;
+const VIDEO_URL = "https://www.youtube.com/watch?v=i46lq8NS2JI";
 
 client.once('ready', async () => {
   console.log('Bot is online');
