@@ -6,8 +6,8 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates]
 });
 
-const CHANNEL_ID = 850155403349065751;
-const GUILD_ID = 850155402141237318;
+const CHANNEL_ID = '850155403349065751';
+const GUILD_ID = '850155402141237318';
 const VIDEO_URL = "https://www.youtube.com/watch?v=i46lq8NS2JI";
 
 client.once('ready', async () => {
